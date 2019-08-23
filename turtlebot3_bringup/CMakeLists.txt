@@ -16,6 +16,9 @@ find_package(catkin REQUIRED COMPONENTS
   sensor_msgs
   diagnostic_msgs
   turtlebot3_msgs
+  actionlib
+  actionlib_msgs
+  move_base_msgs    
 )
 
 ################################################################################
