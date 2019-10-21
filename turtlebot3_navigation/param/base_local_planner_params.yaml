@@ -1,16 +1,19 @@
 TrajectoryPlannerROS:
 
+#efk added used for backing up 
+  escape_vel: -0.08
+
 # Robot Configuration Parameters
-  max_vel_x: 0.18
-  min_vel_x: 0.08
+  max_vel_x: 0.18 # per spec this could be 2.2 leave at .18
+  min_vel_x: 0.08 # should figure out what this is
 
   max_vel_theta:  1.0
   min_vel_theta: -1.0
   min_in_place_vel_theta: 1.0
 
-  acc_lim_x: 1.0
+  acc_lim_x: .2 #1.0 make max acceleration = max speed
   acc_lim_y: 0.0
-  acc_lim_theta: 0.6
+  acc_lim_theta: 0.6 # left this alone
 
 # Goal Tolerance Parameters
   xy_goal_tolerance: 0.10

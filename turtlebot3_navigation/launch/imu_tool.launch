@@ -1,0 +1,15 @@
+<launch>
+  #### IMU Orientation Filter ###############################################
+
+  <node pkg="imu_filter_madgwick" type="imu_filter_node" name="imu_filter_node" args="imu/data_raw:=imu"
+    output="screen">
+    <!--remap from="/imu" to="/imu/data_raw" /-->
+    <param name="use_mag" value="false"/>
+    <param name="use_magnetic_field_msg" value="false"/>
+    <param name="world_frame" value="enu" />
+    <param name="imu_topic" value="imu" />
+    <!--param name="magnetic_topic" value="magnetic_field" /-->
+
+  </node>
+
+</launch>

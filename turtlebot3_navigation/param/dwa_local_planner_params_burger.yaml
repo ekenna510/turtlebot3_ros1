@@ -1,7 +1,7 @@
 DWAPlannerROS:
 
 # Robot Configuration Parameters
-  max_vel_x: 0.22
+  max_vel_x: 0.18 #.22 original
   min_vel_x: -0.05
 #  min_vel_x: -0.22 original
 
@@ -9,13 +9,23 @@ DWAPlannerROS:
   min_vel_y: 0.0
 
 # The velocity when robot is moving in a straight line
-  max_trans_vel:  0.22
-  min_trans_vel:  0.05
+#Parameter max_trans_vel is deprecated (and will not load properly). Use max_vel_trans instead.
+#Parameter min_trans_vel is deprecated (and will not load properly). Use min_vel_trans instead.
+  max_vel_trans:  0.18
+  min_vel_trans:  0.05
+#  max_trans_vel:  0.18 #22
+#  min_trans_vel:  0.05
 
-  max_rot_vel: 2.75
-  min_rot_vel: 1.37
+#Parameter max_rot_vel is deprecated (and will not load properly). Use max_vel_theta instead.
+#Parameter min_rot_vel is deprecated (and will not load properly). Use min_vel_theta instead.
 
-  acc_lim_x: 2.5
+  max_vel_theta: 2.75
+  min_vel_theta: 1.0
+
+#  max_rot_vel: 2.75
+#  min_rot_vel: 1.0 #1.37
+
+  acc_lim_x: .2 #2.5 made same as speed
   acc_lim_y: 0.0
   acc_lim_theta: 3.2 
 
@@ -27,6 +37,7 @@ DWAPlannerROS:
 # Forward Simulation Parameters
   #sim_time 1.5
   sim_time: 3.0
+  sim_granularity: 0.02
   vx_samples: 20
   vy_samples: 0
   vtheta_samples: 40
