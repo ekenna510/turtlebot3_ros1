@@ -1,15 +1,34 @@
-obstacle_range: 3.0
-raytrace_range: 3.5
+# moved to global or local obstacle_range: 3.0
+# moved to global or local raytrace_range: 3.5
 
 footprint: [[-0.105, -0.105], [-0.105, 0.105], [0.041, 0.105], [0.041, -0.105]]
 #robot_radius: 0.105
 
-# originallt inflation was 1.0
-inflation_radius: 0.15
-# was 3.0 made 2
-cost_scaling_factor: 2.0
+# new set up to default
+transform_tolerance: 0.2
+update_frequency: 5
+publish_frequency: 0.0
 
-map_type: costmap
-observation_sources: scan
-scan: {sensor_frame: base_scan, data_type: LaserScan, topic: scan, marking: true, clearing: true}
+
+
+
+
+
+
+
+
+# originallt inflation was 1.0
+# moved to global or local inflation_radius: 0.15
+# was 3.0 made 2
+# moved to global or local cost_scaling_factor: 2.0
+
+# moved to global or local map_type: costmap
+# moved to global or local observation_sources: scan
+# moved to global or local scan: {sensor_frame: base_scan, data_type: LaserScan, topic: scan, marking: true, clearing: true}
+
+# moved to global or local plugins:
+# moved to global or local   - {name: footprint, type: "costmap_2d::FootprintLayer"}
+# moved to global or local   - {name: obstacles, type: "costmap_2d::ObstacleLayer"}
+# moved to global or local   - {name: inflater,  type: "costmap_2d::InflationLayer"}
+
 

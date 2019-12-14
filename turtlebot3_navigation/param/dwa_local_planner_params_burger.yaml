@@ -1,49 +1,53 @@
 DWAPlannerROS:
 
-# Robot Configuration Parameters
+  # Robot Configuration Parameters
   max_vel_x: 0.18 #.22 original
-  min_vel_x: -0.05
-#  min_vel_x: -0.22 original
+  min_vel_x: -0.06
+  #  min_vel_x: -0.22 original
 
   max_vel_y: 0.0
   min_vel_y: 0.0
 
-# The velocity when robot is moving in a straight line
-#Parameter max_trans_vel is deprecated (and will not load properly). Use max_vel_trans instead.
-#Parameter min_trans_vel is deprecated (and will not load properly). Use min_vel_trans instead.
-  max_vel_trans:  0.18
-  min_vel_trans:  0.05
-#  max_trans_vel:  0.18 #22
-#  min_trans_vel:  0.05
+  # The velocity when robot is moving in a straight line
+  #Parameter max_trans_vel is deprecated (and will not load properly). Use max_vel_trans instead.
+  #Parameter min_trans_vel is deprecated (and will not load properly). Use min_vel_trans instead.
+  max_vel_trans: 0.18
+  min_vel_trans: 0.06
 
-#Parameter max_rot_vel is deprecated (and will not load properly). Use max_vel_theta instead.
-#Parameter min_rot_vel is deprecated (and will not load properly). Use min_vel_theta instead.
+  #https://github.com/ros-planning/navigation/issues/683 you can set min_trans_vel to -1.
+  #If you want to allow in place rotations even not near the goal, you can set min_trans_vel to -1.
+  #  max_trans_vel  0.18 #22
+  #  min_trans_vel  0.05
+
+  #Parameter max_rot_vel is deprecated (and will not load properly). Use max_vel_theta instead.
+  #Parameter min_rot_vel is deprecated (and will not load properly). Use min_vel_theta instead.
 
   max_vel_theta: 2.75
-  min_vel_theta: 1.0
+  min_vel_theta: 0.5
+  # min_vel_theta: -2.75
 
-#  max_rot_vel: 2.75
-#  min_rot_vel: 1.0 #1.37
 
-  acc_lim_x: .2 #2.5 made same as speed
+  #  max_rot_vel: 2.75
+  #  min_rot_vel: 1.0 #1.37
+
+  acc_lim_x: .18 #2.5 made same as speed
   acc_lim_y: 0.0
-  acc_lim_theta: 3.2 
+  acc_lim_theta: 2.75 #3.2 
 
-# Goal Tolerance Parametes
+  # Goal Tolerance Parametes
   xy_goal_tolerance: 0.05
   yaw_goal_tolerance: 0.17
   latch_xy_goal_tolerance: false
 
-# Forward Simulation Parameters
-  #sim_time 1.5
-  sim_time: 3.0
+  # Forward Simulation Parameters
+  sim_time: 1.5
   sim_granularity: 0.02
   vx_samples: 20
   vy_samples: 0
   vtheta_samples: 40
   controller_frequency: 10.0
 
-# Trajectory Scoring Parameters
+  # Trajectory Scoring Parameters
   path_distance_bias: 32.0
   goal_distance_bias: 20.0
   occdist_scale: 0.02
@@ -52,9 +56,10 @@ DWAPlannerROS:
   scaling_speed: 0.25
   max_scaling_factor: 0.2
 
-# Oscillation Prevention Parameters
+  # Oscillation Prevention Parameters
   oscillation_reset_dist: 0.05
 
-# Debugging
-  publish_traj_pc : true
+  # Debugging
+  publish_traj_pc: true
   publish_cost_grid_pc: true
+

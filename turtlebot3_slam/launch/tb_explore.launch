@@ -25,8 +25,9 @@
 
   <include file="$(find turtlebot3_navigation)/launch/move_base.launch"/>
 
-
-  <include file="$(find explore_lite)/launch/burgerexplore.launch"/>
+  <!-- ths was just burgerexplore.launch but I think we use costmap version with move_base-->
+  <include file="$(find explore_lite)/launch/burgerexplore_costmap.launch"/>
+  <!--include file="$(find explore_lite)/launch/burgerexplore.launch"/-->
 
   <!-- rviz -->
   <group if="$(arg open_rviz)"> 
