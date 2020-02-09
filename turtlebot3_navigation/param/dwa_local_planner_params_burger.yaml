@@ -1,18 +1,20 @@
 DWAPlannerROS:
 
   # Robot Configuration Parameters
-  max_vel_x: 0.18 #.22 original
-  min_vel_x: -0.06
-  #  min_vel_x: -0.22 original
+  max_vel_x: 0.18 # original motor max is .22 set same as max_vel_trans
+  min_vel_x: -0.06  # robot bucks if backing up to fast.
 
-  max_vel_y: 0.0
+  max_vel_y: 0.0 # per tuning pdf this should be 0 for differential
   min_vel_y: 0.0
 
-  # The velocity when robot is moving in a straight line
+  # The absolute value of the maximum translational velocity for the robot in m/s 
+  # my guess The velocity when robot is moving in a straight line 
   #Parameter max_trans_vel is deprecated (and will not load properly). Use max_vel_trans instead.
   #Parameter min_trans_vel is deprecated (and will not load properly). Use min_vel_trans instead.
-  max_vel_trans: 0.18
-  min_vel_trans: 0.06
+  #rpm max is 57 att 11.1 votlage
+
+  max_vel_trans: 0.18  
+  min_vel_trans: 0.01 # changed this from .06 to -.06 per tuning pdf this should be negative
 
   #https://github.com/ros-planning/navigation/issues/683 you can set min_trans_vel to -1.
   #If you want to allow in place rotations even not near the goal, you can set min_trans_vel to -1.
@@ -23,16 +25,16 @@ DWAPlannerROS:
   #Parameter min_rot_vel is deprecated (and will not load properly). Use min_vel_theta instead.
 
   max_vel_theta: 2.75
-  min_vel_theta: 0.5
-  # min_vel_theta: -2.75
+  min_vel_theta: 0.1
 
 
-  #  max_rot_vel: 2.75
-  #  min_rot_vel: 1.0 #1.37
+  #  max_rot_vel 2.75
+  #  min_rot_vel 1.0 #1.37
 
-  acc_lim_x: .18 #2.5 made same as speed
-  acc_lim_y: 0.0
+  acc_lim_x: 0.18 #2.5 made same as speed
+  acc_lim_y: 0.0 # based on tuning pdf
   acc_lim_theta: 2.75 #3.2 
+  acc_lim_trans: 0.18
 
   # Goal Tolerance Parametes
   xy_goal_tolerance: 0.05
@@ -57,9 +59,14 @@ DWAPlannerROS:
   max_scaling_factor: 0.2
 
   # Oscillation Prevention Parameters
-  oscillation_reset_dist: 0.05
+  oscillation_reset_dist: 0.07
 
   # Debugging
   publish_traj_pc: true
   publish_cost_grid_pc: true
+
+  trans_stopped_vel: 0.01
+  theta_stopped_vel: 0.05
+
+  prune_plan: true
 

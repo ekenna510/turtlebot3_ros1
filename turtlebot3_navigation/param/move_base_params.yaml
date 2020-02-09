@@ -7,4 +7,20 @@ planner_frequency: 5.0
 oscillation_timeout: 10.0
 oscillation_distance: 0.2
 recovery_behavior_enabled: true
+max_planning_retries: 5 
+
+#new values set after reviewing move_base.cpp
+#I do not these these 2 are using in costmaps or planners
+local_costmap/inscribed_radius: 0.105
+local_costmap/circumscribed_radius: 0.150
+clearing_rotation_allowed: true
+#clearing_radius undocumented the movebase clearcostmapwindow method uses this as size of window to clear
+clearing_radius: 0.3
+#adding my recovery 
+#  {name: my_recovery, type: my_recovery/myrecovery}, 
+recovery_behaviors:
+ [{name: conservative_reset, type: clear_costmap_recovery/ClearCostmapRecovery}, 
+  {name: rotate_recovery, type: rotate_recovery/RotateRecovery}, 
+  {name: aggressive_reset, type: clear_costmap_recovery/ClearCostmapRecovery}]
+
 

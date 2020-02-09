@@ -1,29 +1,77 @@
 TrajectoryPlannerROS:
 
 #efk added used for backing up 
-  escape_vel: -0.08
+  escape_vel: -0.06
 
 # Robot Configuration Parameters
   max_vel_x: 0.18 # per spec this could be 2.2 leave at .18
-  min_vel_x: 0.06 # should figure out what this is
+  min_vel_x: 0.01 # should figure out what this is
 
   max_vel_theta:  1.0
   min_vel_theta: -1.0
-  min_in_place_vel_theta: 1.0
+  min_in_place_vel_theta: 0.4
+  min_in_place_rotational_vel: 0.04
 
-  acc_lim_x: .2 #1.0 make max acceleration = max speed
+  acc_lim_x: .18 #1.0 make max acceleration = max speed
   acc_lim_y: 0.0
-  acc_lim_theta: 0.6 # left this alone
+  acc_lim_theta: 2.75 # left this alone
 
 # Goal Tolerance Parameters
-  xy_goal_tolerance: 0.10
-  yaw_goal_tolerance: 0.05
+  xy_goal_tolerance: 0.05
+  yaw_goal_tolerance: 0.17
+  latch_xy_goal_tolerance: false
 
 # Differential-drive robot configuration
   holonomic_robot: false
 
 # Forward Simulation Parameters
-  sim_time: 0.8
+  sim_time: 4
   vx_samples: 18
   vtheta_samples: 20
   sim_granularity: 0.05
+  angular_sim_granularity: 0.05
+  controller_frequency: 10
+
+#  angular_sim_granularity let this default to sim_granularity
+
+  acc_lim_x: 0.18 #2.5 made same as speed
+  acc_lim_y: 0.0 # based on tuning pdf
+  acc_lim_theta: 2.75 #3.2 
+  acc_lim_trans: 0.18
+
+# Trajectory Scoring Parameters
+  meter_scoring: false
+
+  # Trajectory Scoring Parameters
+  path_distance_bias: 0.6  # per code this is the name
+  goal_distance_bias: 0.8  # per code this is the name
+  occdist_scale: 0.04
+
+  #pdist_scale: 0.6 # per code these have been renamed
+  #gdist_scale: 0.6 # per code these have been renamed
+
+
+  heading_scoring: false # see if this prevents runnig into wall
+  heading_scoring_timestep: 0.8
+  dwa: false
+  publish_cost_grid_pc: true
+  global_frame_id: odom
+  oscillation_reset_dist: 0.05
+  prune_plan: true
+
+# undocumented 
+  stop_time_buffer: 0.2  
+  heading_lookahead: 0.325
+  escape_reset_dist: 0.20
+  escape_reset_theta: 0.4 
+  max_rotational_vel: 1.0
+  world_model: costmap
+  controller_frequency: 10
+
+
+  point_grid/max_sensor_range: 3.0
+  point_grid/min_pt_separation: 0.01
+  point_grid/max_obstacle_height: 2.0
+  point_grid/grid_resolution: 0.05
+
+
